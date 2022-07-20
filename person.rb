@@ -4,24 +4,18 @@ require_relative './teacher'
 class Person
   extend Student
   extend Teacher
-  
-  attr_accessor :name, :age, :parent_permission
 
-  def initialize(name, age, parent_permission)
-    @id = 0
+  def initialize(age, name: 'Unknown', parent_permission: true)
+    @id = Random.rand(1..1000)
     @name = name
     @age = age
     @parent_permission = parent_permission
   end
 
-  def self.inherited(subclass)
-    subclass.define_method :override do
-      parent_permission = true
-      super
-    end
-  end
+  attr_reader :id
+  attr_accessor :name, :age, :parent_permission
 
-  def getter
+  def get
     {
       'id' => @id,
       'name' => @name,
@@ -29,7 +23,7 @@ class Person
     }
   end
 
-  def setter(name, age)
+  def set(name, age)
     @name = name
     @age = age
   end
@@ -39,19 +33,8 @@ class Person
   end
 
   def can_use_services?
-    if @age >= 18
-      (@parent_permission == true)
-    else
-      false
-    end
+    @parent_permission == true || isof_age?
   end
+
+  private :isof_age?
 end
-
-person = Person.new('Camilux1', 19, true)
-
-p(person.isof_age?)
-p(person.can_use_services?)
-p(person.getter)
-person.setter('azelton', 22)
-p(person.getter)
-p(Person.play_hooky)
