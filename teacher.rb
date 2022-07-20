@@ -1,7 +1,7 @@
 module Teacher
-  def initialize(specialization)
+  def initialize(specialization, age, parent_permission: true, name: 'Unknown')
+    super(name, age, parent_permission)
     @specialization = specialization
-    super
   end
 
   def can_use_service?
