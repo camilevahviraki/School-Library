@@ -1,5 +1,6 @@
 require_relative './student'
 require_relative './person'
+require_relative './classroom'
 
 class Classroom
   def initialize(label)
@@ -8,8 +9,8 @@ class Classroom
   attr_accessor :label
 
   def add_student
-    students = new.Student(@label)
-  end  
+    new.Student(@label)
+  end
 end
 
 class Book
@@ -20,7 +21,7 @@ class Book
   attr_accessor :title, :author
 
   def add_rental(date)
-    bookRentals = new.Rental(date)
+    new.Rental(date)
   end
 end
 
@@ -36,14 +37,13 @@ class Rental
   def belongs_to_book
     title = @book_data.title
     author = @book_data.author
-    rental_for_book = new.Book(title, author)
+    new.Book(title, author)
   end
 
   def belongs_to_person
     age = @person_data.age
     name = @person_data.name
     parent_permission = @person_data.parent_permission
-    rental_for_person = new.Person(age, name, parent_permission)
+    new.Person(age, name, parent_permission)
   end
-
 end

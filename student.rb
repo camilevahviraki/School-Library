@@ -9,6 +9,6 @@ module Student
   end
 
   def add_to_classroom
-    classroom = new.Classroom(@classroom)
-  end  
+    new.Classroom(@classroom)
+  end
 end
