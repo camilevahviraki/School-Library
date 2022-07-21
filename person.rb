@@ -43,6 +43,15 @@ class Person < Nameable
     @name
   end
 
+  def add_rental(rental_date, book_data)
+    person_data={
+      age => @date,
+      name => @name,
+      parent_permission => @parent_permission,
+    }
+    person_rental = new.Rental(rental_date, person_data, book_data)
+  end  
+
   private :isof_age?
 end
 
