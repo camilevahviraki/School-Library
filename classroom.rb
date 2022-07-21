@@ -28,8 +28,10 @@ end
 class Rental
   def initialize(date, person_obj, book_obj)
     @date = date
-    @person_data = person_obj
-    @book_data = book_obj
+    @person_data << person_obj
+    @book_data << book_obj
+    person_obj << self
+    book_data << self
   end
 
   attr_accessor :date, :person_data, :book_data
