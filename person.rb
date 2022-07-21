@@ -13,7 +13,7 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
-    @rental_date=''
+    @rental_date = ''
   end
 
   attr_reader :id
