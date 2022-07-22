@@ -1,18 +1,18 @@
-require_relative './student'
-require_relative './teacher'
 require_relative './nemable'
 require_relative './base'
 
 class Person < Nameable
-  extend Student
-  extend Teacher
-
-  def initialize(age, name, parent_permission: true)
+  @@person = []
+  @@id = 0
+  def initialize(age, name, profession, parent_permission: true)
     super(self)
+    @@id += 1
     @id = Random.rand(1..1000)
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @@person.push({ 'id' => @@id.to_s, 'name' => @name, 'age' => @age, 'parent_permission' => @parent_permission,
+                    'profession' => profession })
   end
 
   attr_reader :id
@@ -52,12 +52,15 @@ class Person < Nameable
     new.Rental(rental_date, person_data, book_data)
   end
 
+  def person_list
+    @@person.each_with_index do |perso, key|
+      puts "#{key}) [#{perso['profession']}] Name: #{perso['name']} ID: #{perso['id']} Age: #{perso['age']}"
+    end
+  end
+
+  def all_persons_storage
+    @@person
+  end
+
   private :isof_age?
 end
-
-person = Person.new(22, 'maximilianus')
-person.correct_name
-capitalize_person = CapitalizeDecorator.new(person)
-capitalize_person.correct_name
-capitalize_trimer = TrimmerDecorator.new(capitalize_person)
-capitalize_trimer.correct_name
