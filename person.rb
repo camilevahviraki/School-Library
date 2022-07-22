@@ -49,6 +49,8 @@ class Person < Nameable
       name => @name,
       parent_permission => @parent_permission
     }
+    @rental_date << rental_date
+    rental_date.person << self
     new.Rental(rental_date, person_data, book_data)
   end
 
