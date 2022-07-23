@@ -1,32 +1,5 @@
 require_relative 'app'
 
-# case int
-# when '1'
-#   @app.list_books
-#   starting
-# when '2'
-#   @app.list_persons
-#   starting
-# when '3'
-#   @app.new_person
-#   starting
-# when '4'
-#   @app.create_book
-#   starting
-# when '5'
-#   @app.create_rental
-#   starting
-# when '6'
-#   @app.list_rental_by_id
-#   starting
-# when '7'
-#   puts 'Exit'
-# else
-#   puts 'Sorry, Enter a number between 1 and 7 to chose an option'
-#   puts ' '
-#   starting
-# end
-
 # Main class handle all methods
 class Main
   def initialize
