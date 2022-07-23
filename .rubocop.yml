@@ -19,9 +19,6 @@ Metrics/BlockLength:
   IgnoredMethods: ['describe']
   Max: 30
 
-
-Style/Documentation:
-  Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
 Style/EachForSimpleLoop:
@@ -30,6 +27,8 @@ Style/AndOr:
   Enabled: false
 Style/DefWithParentheses:
   Enabled: false
+Style/ClassVars:
+  Enabled: false  
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
 

@@ -1,5 +1,5 @@
 require_relative './nemable'
-
+# Base class inherit to nemeable
 class Base < Nameable
   def initialize(nameable)
     @nameable = nameable
@@ -11,12 +11,14 @@ class Base < Nameable
   end
 end
 
+# Capitalize string
 class CapitalizeDecorator < Base
   def correct_name
     @nameable.correct_name.capitalize
   end
 end
 
+# Trimmer a string
 class TrimmerDecorator < Base
   def correct_name
     if @nameable.correct_name.length <= 10

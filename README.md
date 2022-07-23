@@ -10,7 +10,7 @@ To get a local copy up and running follow these simple example steps.
 - write `https://github.com/camilevahviraki/School-Library`.
 - go to the repository folder in your command prompt `School-Library`.
 - Open terminal in that folder run `bundle install`.
-- run `ruby person.rb`
+- run `ruby main.rb`
 
 
 ## Author
