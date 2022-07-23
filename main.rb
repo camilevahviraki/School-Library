@@ -1,38 +1,108 @@
 require_relative 'app'
 
+# case int
+# when '1'
+#   @app.list_books
+#   starting
+# when '2'
+#   @app.list_persons
+#   starting
+# when '3'
+#   @app.new_person
+#   starting
+# when '4'
+#   @app.create_book
+#   starting
+# when '5'
+#   @app.create_rental
+#   starting
+# when '6'
+#   @app.list_rental_by_id
+#   starting
+# when '7'
+#   puts 'Exit'
+# else
+#   puts 'Sorry, Enter a number between 1 and 7 to chose an option'
+#   puts ' '
+#   starting
+# end
+
 # Main class handle all methods
 class Main
   def initialize
     @app = App.new
   end
 
-  def inputs(int)
-    case int
-    when '1'
+  def three1(num)
+    if num == '1'
       @app.list_books
       starting
-    when '2'
+    else
+      ''
+    end
+  end
+
+  def three2(num)
+    if num == '2'
       @app.list_persons
       starting
-    when '3'
+    else
+      ''
+    end
+  end
+
+  def three3(num)
+    if num == '3'
       @app.new_person
       starting
-    when '4'
+    else
+      ''
+    end
+  end
+
+  def three4(num)
+    if num == '4'
       @app.create_book
       starting
-    when '5'
+    else
+      ''
+    end
+  end
+
+  def three5(num)
+    if num == '5'
       @app.create_rental
       starting
-    when '6'
+    else
+      ''
+    end
+  end
+
+  def three6(num)
+    if num == '6'
       @app.list_rental_by_id
       starting
-    when '7'
+    else
+      ''
+    end
+  end
+
+  def three7(num)
+    if num == '7'
       puts 'Exit'
     else
-      puts 'Sorry, Enter a number between 1 and 7 to chose an option'
-      puts ' '
-      starting
+      ''
     end
+  end
+
+  def inputs(int)
+    three1(int)
+    three2(int)
+    three3(int)
+    three4(int)
+    three5(int)
+    three6(int)
+    three7(int)
   end
 
   def starting
