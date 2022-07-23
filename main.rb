@@ -1,5 +1,6 @@
 require_relative 'app'
 
+# Main class handle all methods
 class Main
   def initialize
     @app = App.new

@@ -1,6 +1,7 @@
 require_relative 'person'
+# Student inherit to person
 class Student < Person
-  def initialize(classroom, age, name, profession, parent_permission)
+  def initialize(classroom, age, name, profession, _parent_permission)
     super(age, name, profession)
     @classroom = classroom
   end

@@ -1,3 +1,4 @@
+# class Nemeable
 class Nameable
   def initialize(nameable)
     @nameable = nameable

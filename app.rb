@@ -2,7 +2,7 @@ require_relative 'person'
 require_relative 'classroom'
 require_relative 'student'
 require_relative 'teacher'
-
+# Console entry point
 class App
   def initialize
     @book_arr = []
@@ -21,7 +21,7 @@ class App
     true_permission = permission == 'y' || 'yes' || 'Y'
     puts "Name: #{name} Age: #{age} created successfully"
     @id += 1
-    @person_arr.push({'id' => @id.to_s, 'name' => name, 'age' => age, 'profession' => 'Student'})
+    @person_arr.push({ 'id' => @id.to_s, 'name' => name, 'age' => age, 'profession' => 'Student' })
     Student.new('Year 1', age, name, 'Student', true_permission)
   end
 
@@ -33,22 +33,22 @@ class App
     printf 'specialization:'
     specialization = gets.chomp
     @id += 1
-    @person_arr.push({'id' => @id.to_s, 'name' => name, 'age' => age, 'profession' => 'Teacher'})
+    @person_arr.push({ 'id' => @id.to_s, 'name' => name, 'age' => age, 'profession' => 'Teacher' })
     Teacher.new(specialization, age, name, 'Teacher')
     puts "Name: #{name} specialzation:#{specialization} Age: #{age}  Added successfuly!"
-  end  
+  end
 
   def list_books
     @book_arr.each_with_index do |book, key|
       puts "#{key}) Title: #{book['title']}, Author: #{book['author']}"
-    end  
+    end
     puts ' '
   end
 
   def list_persons
     @person_arr.each_with_index do |perso, key|
       puts "#{key}) [#{perso['profession']}] Name: #{perso['name']} ID: #{perso['id']} Age: #{perso['age']}"
-    end  
+    end
     puts ' '
   end
 
@@ -57,8 +57,7 @@ class App
     title = gets.chomp
     printf 'Author:'
     author = gets.chomp
-    Book.new(title, author)
-    @book_arr.push({'title' => title, 'author' => author})
+    @book_arr.push({ 'title' => title, 'author' => author })
     puts 'Book created successfuly'
     puts ' '
   end
@@ -88,8 +87,7 @@ class App
     person_to_add = @person_arr[person_id.to_i]
     printf 'Date:'
     date_to_add = gets.chomp
-    @rental_arr.push({'date' => date_to_add, 'book' => book_to_add, 'person' => person_to_add})
-    Rental.new(date_to_add, person_to_add, book_to_add)
+    @rental_arr.push({ 'date' => date_to_add, 'book' => book_to_add, 'person' => person_to_add })
     puts 'Rental created successfuly'
     puts ' '
   end
