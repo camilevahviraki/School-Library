@@ -6,61 +6,55 @@ class Main
     @app = App.new
   end
 
-  def three1(num)
+  def tree1(num)
     if num == '1'
       @app.list_books
-      starting
     else
       ''
     end
   end
 
-  def three2(num)
+  def tree2(num)
     if num == '2'
       @app.list_persons
-      starting
     else
       ''
     end
   end
 
-  def three3(num)
+  def tree3(num)
     if num == '3'
       @app.new_person
-      starting
     else
       ''
     end
   end
 
-  def three4(num)
+  def tree4(num)
     if num == '4'
       @app.create_book
-      starting
     else
       ''
     end
   end
 
-  def three5(num)
+  def tree5(num)
     if num == '5'
       @app.create_rental
-      starting
     else
       ''
     end
   end
 
-  def three6(num)
+  def tree6(num)
     if num == '6'
       @app.list_rental_by_id
-      starting
     else
       ''
     end
   end
 
-  def three7(num)
+  def tree7(num)
     if num == '7'
       puts 'Exit'
     else
@@ -69,13 +63,17 @@ class Main
   end
 
   def inputs(int)
-    three1(int)
-    three2(int)
-    three3(int)
-    three4(int)
-    three5(int)
-    three6(int)
-    three7(int)
+    if int == '7'
+      tree7(int)
+    else
+      tree1(int)
+      tree2(int)
+      tree3(int)
+      tree4(int)
+      tree5(int)
+      tree6(int)
+      starting
+    end
   end
 
   def starting
