@@ -1,77 +1,21 @@
-require_relative 'app'
+require_relative 'options'
 
 # Main class handle all methods
 class Main
   def initialize
-    @app = App.new
-  end
-
-  def tree1(num)
-    if num == '1'
-      @app.list_books
-    else
-      ''
-    end
-  end
-
-  def tree2(num)
-    if num == '2'
-      @app.list_persons
-    else
-      ''
-    end
-  end
-
-  def tree3(num)
-    if num == '3'
-      @app.new_person
-    else
-      ''
-    end
-  end
-
-  def tree4(num)
-    if num == '4'
-      @app.create_book
-    else
-      ''
-    end
-  end
-
-  def tree5(num)
-    if num == '5'
-      @app.create_rental
-    else
-      ''
-    end
-  end
-
-  def tree6(num)
-    if num == '6'
-      @app.list_rental_by_id
-    else
-      ''
-    end
-  end
-
-  def tree7(num)
-    if num == '7'
-      puts 'Exit'
-    else
-      ''
-    end
+    @option = Options.new
   end
 
   def inputs(int)
     if int == '7'
-      tree7(int)
+      @option.tree7(int)
     else
-      tree1(int)
-      tree2(int)
-      tree3(int)
-      tree4(int)
-      tree5(int)
-      tree6(int)
+      @option.tree1(int)
+      @option.tree2(int)
+      @option.tree3(int)
+      @option.tree4(int)
+      @option.tree5(int)
+      @option.tree6(int)
       starting
     end
   end
