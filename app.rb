@@ -1,13 +1,13 @@
-require_relative 'person'
-require_relative 'classroom'
-require_relative 'student'
-require_relative 'teacher'
+require 'json'
+
 # Console entry point
 class App
   def initialize
     @book_arr = []
     @person_arr = []
     @rental_arr = []
+    @books_list = []
+    @persons_list = []
     @id = 0
   end
 
@@ -38,15 +38,46 @@ class App
   end
 
   def list_books
-    @book_arr.each_with_index do |book, key|
-      puts "#{key}) Title: #{book[:title]}, Author: #{book[:author]}"
+    unless Dir.glob("*.json").include? 'books.json'
+      File.new("books.json", "w+")
     end
+
+    if File.empty?('books.json')
+      book_list = []
+    else
+      data = File.read("books.json").split
+      book_list = JSON.parse(data.join)  
+    end
+    
+    @book_arr.each do |book|
+      book_list.push(book)
+    end
+    @books_list = book_list
+    book_list.each_with_index do |book, key|
+      puts "#{key}) Title: #{book['title']}, Author: #{book['author']}"
+    end
+    
     puts ' '
   end
 
   def list_persons
-    @person_arr.each_with_index do |perso, key|
-      puts "#{key}) [#{perso[:profession]}] Name: #{perso[:name]} ID: #{perso[:id]} Age: #{perso[:age]}"
+    unless Dir.glob("*.json").include? 'person.json'
+      File.new("person.json", "w+")
+    end
+
+    if File.empty?('person.json')
+      person_list = []
+    else
+      data = File.read("person.json").split
+      person_list = JSON.parse(data.join)  
+    end
+
+    @person_arr.each do |perso|
+      person_list.push(perso)
+    end
+    @persons_list = person_list
+    person_list.each_with_index do |perso, key|
+      puts "#{key}) [#{perso['profession']}] Name: #{perso['name']} ID: #{perso['id']} Age: #{perso['age']}"
     end
     puts ' '
   end
@@ -79,28 +110,56 @@ class App
     puts 'Please select a book from the following list by number :'
     list_books
     book = gets.chomp
-    book_to_add = @book_arr[book.to_i]
+    book_to_add = @books_list[book.to_i]
     puts 'Please select a person from the following list by number:'
     list_persons
     person_id = gets.chomp
-    person_to_add = @person_arr[person_id.to_i]
+    person_to_add = @persons_list[person_id.to_i]
     printf 'Date:'
     date_to_add = gets.chomp
-    @rental_arr.push({ date: date_to_add, book: book_to_add, person: person_to_add })
+    @rental_arr.push({ 'date'=> date_to_add, 'book'=> book_to_add, 'person'=> person_to_add })
     puts 'Rental created successfuly'
     puts ' '
   end
 
   def list_rental_by_id
+    unless Dir.glob("*.json").include? 'rentals.json'
+      File.new("rentals.json", "w+")
+    end
+
+    if File.empty?('rentals.json')
+      rentals_list = []
+    else
+      data = File.read("rentals.json").split
+      rentals_list = JSON.parse(data.join)
+    end
+
+    @rental_arr.each do |rental|
+      rentals_list.push(rental)
+    end  
+
     puts 'Enter a person Id to see he\'s rentals'
     printf 'Id:'
     id = gets.chomp
-    find_rentals = @rental_arr.select { |rental| rental[:person][:id] == id }
+    find_rentals = rentals_list.select { |rental| rental['person']['id'] == id }
     puts 'Rentals:'
     find_rentals.each_with_index do |rental, idx|
-      puts "#{idx + 1}) Name: #{rental[:person][:name]},
-        Book: #{rental[:book][:title]} Date: #{rental[:date]}"
+      puts "#{idx + 1}) Name: #{rental['person']['name']},
+        Book: #{rental['book']['title']} Date: #{rental['date']}"
     end
     puts ' '
   end
+
+  def book_arrz
+    return @book_arr
+  end
+
+  def person_arr
+    @person_arr
+  end
+  
+  def rental_arr
+    @rental_arr
+  end  
+
 end
