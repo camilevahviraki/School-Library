@@ -21,6 +21,12 @@ To get a local copy up and running follow these simple example steps.
 - Twitter: [@camilevahviraki](https://twitter.com/CamileVahviraki)
 - LinkedIn: [camilevahviraki](https://www.linkedin.com/in/camile-vahviraki)
 
+👤 **Simba WANGU**
+
+- GitHub: [@SimbaWANGU](https://github.com/SimbaWANGU)
+- Twitter: [@Simb_erella](https://twitter.com/Simb_erella)
+- LinkedIn: [Simba Wangulu](https://linkedin.com/in/simba-wangulu/)
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/camilevahviraki/School-Library. This project is intended to be a safe, welcoming space for collaboration, and contributors are welcome.
