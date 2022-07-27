@@ -6,12 +6,9 @@ require_relative 'app'
 class Options
   def initialize
     @app = App.new
-    
   end
 
-  def app
-    @app
-  end  
+  attr_reader :app
 
   def tree1(num)
     if num == '1'
@@ -71,38 +68,32 @@ class Options
       ''
     end
   end
-  
-  ######################################Store
+
+  # #####################################Store
   def books_store
-    unless Dir.glob("*.json").include? 'books.json'
-      File.new("books.json", "w+")
-    end
+    File.new('books.json', 'w+') unless Dir.glob('*.json').include? 'books.json'
 
     if File.empty?('books.json')
       book_list = []
     else
-      data = File.read("books.json").split
-      book_list = JSON.parse(data.join)  
+      data = File.read('books.json').split
+      book_list = JSON.parse(data.join)
     end
 
     @app.book_arrz.each do |book|
       book_list.push(book)
     end
 
-    File.open("books.json", "w") do |f|
-      f.write(book_list.to_json)
-    end
+    File.write('books.json', book_list.to_json)
   end
 
   def person_store
-    unless Dir.glob("*.json").include? 'person.json'
-      File.new("person.json", "w+")
-    end  
+    File.new('person.json', 'w+') unless Dir.glob('*.json').include? 'person.json'
 
     if File.empty?('person.json')
       person_list = []
     else
-      data = File.read("person.json").split
+      data = File.read('person.json').split
       person_list = JSON.parse(data.join)
     end
 
@@ -110,20 +101,16 @@ class Options
       person_list.push(person)
     end
 
-    File.open("person.json", "w") do |f|
-      f.write(person_list.to_json)
-    end
+    File.write('person.json', person_list.to_json)
   end
 
   def rentals_store
-    unless Dir.glob("*.json").include? 'rentals.json'
-      File.new("rentals.json", "w+")
-    end  
+    File.new('rentals.json', 'w+') unless Dir.glob('*.json').include? 'rentals.json'
 
     if File.empty?('rentals.json')
       rentals_list = []
     else
-      data = File.read("rentals.json").split
+      data = File.read('rentals.json').split
       rentals_list = JSON.parse(data.join)
     end
 
@@ -131,10 +118,6 @@ class Options
       rentals_list.push(rental)
     end
 
-    File.open("rentals.json", "w") do |f|
-      f.write(rentals_list.to_json)
-    end
-    
+    File.write('rentals.json', rentals_list.to_json)
   end
-  
 end

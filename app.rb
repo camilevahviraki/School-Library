@@ -38,17 +38,15 @@ class App
   end
 
   def list_books
-    unless Dir.glob("*.json").include? 'books.json'
-      File.new("books.json", "w+")
-    end
+    File.new('books.json', 'w+') unless Dir.glob('*.json').include? 'books.json'
 
     if File.empty?('books.json')
       book_list = []
     else
-      data = File.read("books.json").split
-      book_list = JSON.parse(data.join)  
+      data = File.read('books.json').split
+      book_list = JSON.parse(data.join)
     end
-    
+
     @book_arr.each do |book|
       book_list.push(book)
     end
@@ -56,20 +54,18 @@ class App
     book_list.each_with_index do |book, key|
       puts "#{key}) Title: #{book['title']}, Author: #{book['author']}"
     end
-    
+
     puts ' '
   end
 
   def list_persons
-    unless Dir.glob("*.json").include? 'person.json'
-      File.new("person.json", "w+")
-    end
+    File.new('person.json', 'w+') unless Dir.glob('*.json').include? 'person.json'
 
     if File.empty?('person.json')
       person_list = []
     else
-      data = File.read("person.json").split
-      person_list = JSON.parse(data.join)  
+      data = File.read('person.json').split
+      person_list = JSON.parse(data.join)
     end
 
     @person_arr.each do |perso|
@@ -117,26 +113,24 @@ class App
     person_to_add = @persons_list[person_id.to_i]
     printf 'Date:'
     date_to_add = gets.chomp
-    @rental_arr.push({ 'date'=> date_to_add, 'book'=> book_to_add, 'person'=> person_to_add })
+    @rental_arr.push({ 'date' => date_to_add, 'book' => book_to_add, 'person' => person_to_add })
     puts 'Rental created successfuly'
     puts ' '
   end
 
   def list_rental_by_id
-    unless Dir.glob("*.json").include? 'rentals.json'
-      File.new("rentals.json", "w+")
-    end
+    File.new('rentals.json', 'w+') unless Dir.glob('*.json').include? 'rentals.json'
 
     if File.empty?('rentals.json')
       rentals_list = []
     else
-      data = File.read("rentals.json").split
+      data = File.read('rentals.json').split
       rentals_list = JSON.parse(data.join)
     end
 
     @rental_arr.each do |rental|
       rentals_list.push(rental)
-    end  
+    end
 
     puts 'Enter a person Id to see he\'s rentals'
     printf 'Id:'
@@ -151,15 +145,8 @@ class App
   end
 
   def book_arrz
-    return @book_arr
+    @book_arr
   end
 
-  def person_arr
-    @person_arr
-  end
-  
-  def rental_arr
-    @rental_arr
-  end  
-
+  attr_reader :person_arr, :rental_arr
 end
