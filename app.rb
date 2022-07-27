@@ -20,9 +20,9 @@ class App
     permission = gets.chomp
     true_permission = permission == 'y' || 'yes' || 'Y'
     puts "Name: #{name} Age: #{age} created successfully"
-    @id += 1
-    @person_arr.push({ id: @id.to_s, name: name, age: age, profession: 'Student',
-                       permission: true_permission })
+    @id = rand(1...1000)
+    @person_arr.push({ 'id' => @id.to_s, 'name' => name, 'age' => age, 'profession' => 'Student',
+                       'permission' => true_permission })
   end
 
   def add_teacher
@@ -32,8 +32,8 @@ class App
     age = gets.chomp
     printf 'specialization:'
     specialization = gets.chomp
-    @id += 1
-    @person_arr.push({ id: @id.to_s, name: name, age: age, profession: 'Teacher' })
+    @id = rand(1...1000)
+    @person_arr.push({ 'id' => @id.to_s, 'name' => name, 'age' => age, 'profession' => 'Teacher' })
     puts "Name: #{name} specialzation:#{specialization} Age: #{age}  Added successfuly!"
   end
 
@@ -83,7 +83,7 @@ class App
     title = gets.chomp
     printf 'Author:'
     author = gets.chomp
-    @book_arr.push({ title: title, author: author })
+    @book_arr.push({ 'title' => title, 'author' => author })
     puts 'Book created successfuly'
     puts ' '
   end
